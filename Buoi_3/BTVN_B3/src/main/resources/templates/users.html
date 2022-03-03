@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+</head>
+<body>
+<h1 th:align="center">Danh sách Users</h1>
+<table th:border="1" th:width="600px" style="margin: 0 auto" th:cellpadding="5px" th:cellspacing="0">
+    <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Password</th>
+        <th>Fullname</th>
+    </tr>
+    <tr th:each="user: ${users}">
+        <td th:utext="${user.id}"></td>
+        <td th:utext="${user.username}"></td>
+        <td th:utext="${user.password}"></td>
+        <td th:utext="${user.fullName}"></td>
+    </tr>
+</table>
+
+<div th:align="center">
+    <h2>
+        <a th:href="@{/api/v1/users}" th:align="center">View All Users</a>
+    </h2>
+</div>
+</body>
+</html>

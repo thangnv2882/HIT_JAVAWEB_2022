@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class AuthController {
@@ -16,22 +17,27 @@ public class AuthController {
 
     private static boolean check = false;
 
-    @GetMapping("/check")
-    public String getRes(@ModelAttribute User user) {
+//    @GetMapping("/check")
+//    public String getRes(@ModelAttribute User user) {
+//        User o = new User();
+//        if (o.Duyet(user)) {
+//            check = false;
+//            return "redirect:/users";
+//        }
+//        check = true;
+//        return "redirect:login";
+//    }
+
+    @PostMapping("/users")
+    public String getUserPage(@ModelAttribute User user, Model model) {
         User o = new User();
         if (o.Duyet(user)) {
             check = false;
-            return "redirect:/users";
+            Store store = new Store();
+            model.addAttribute("users", store.users);
+            return "users";
         }
         check = true;
         return "redirect:login";
     }
-
-    @GetMapping("/users")
-    public String getUserPage(Model model) {
-        Store store = new Store();
-        model.addAttribute("users", store.users);
-        return "users";
-    }
-
 }

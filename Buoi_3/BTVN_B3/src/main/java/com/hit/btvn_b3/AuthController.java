@@ -16,18 +16,6 @@ public class AuthController {
     }
 
     private static boolean check = false;
-
-//    @GetMapping("/check")
-//    public String getRes(@ModelAttribute User user) {
-//        User o = new User();
-//        if (o.Duyet(user)) {
-//            check = false;
-//            return "redirect:/users";
-//        }
-//        check = true;
-//        return "redirect:login";
-//    }
-
     @PostMapping("/users")
     public String getUserPage(@ModelAttribute User user, Model model) {
         User o = new User();

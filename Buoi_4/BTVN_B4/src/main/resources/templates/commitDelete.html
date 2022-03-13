@@ -12,18 +12,17 @@
 
 
     <h2 th:text="'Commit delete user id: ' + ${id}"></h2>
-
+    <form th:action="@{/commit-delete}" >
+        <input id="id" name="id" th:value="${id}" hidden>
+        <button type="submit">Commit</button>
+        <button type="button" onclick="cancel()">Cancel</button>
+    </form>
     <br>
-    <button onclick="commit()">Commit</button>
-    <button onclick="cancel()">Cancel</button>
 </div>
 
 <script>
     function cancel() {
         window.location = "[[@{/users}]]"
-    }
-    function commit() {
-        window.location = "[[@{/commit-delete}]]"
     }
 
 </script>

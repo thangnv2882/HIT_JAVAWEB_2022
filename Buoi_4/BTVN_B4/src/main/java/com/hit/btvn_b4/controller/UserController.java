@@ -48,7 +48,7 @@ public class UserController {
             userRepository.save(user);
             return ResponseEntity.status(HttpStatus.CREATED).body("Created.");
         }
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Create failure.");
+        throw new NotFoundException("Create failure.");
     }
 
     @PatchMapping("/edit/{id}")

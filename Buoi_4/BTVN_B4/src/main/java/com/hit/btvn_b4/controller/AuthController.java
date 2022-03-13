@@ -15,8 +15,6 @@ public class AuthController {
     @Autowired
     private UserRepository userRepository;
 
-    private static Long idDel;
-
     @GetMapping(value = {"/", "/login"})
     public String Login(Model model) {
         model.addAttribute("err", "");
@@ -61,14 +59,14 @@ public class AuthController {
     }
 
     @GetMapping("/delete/{id}")
-    public String deleteUser(@PathVariable("id") Long id) {
-        idDel = id;
+    public String deleteUser(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("id", id);
         return "commitDelete";
     }
 
     @GetMapping("/commit-delete")
-    public String commitDelete() {
-        userRepository.deleteById(idDel);
+    public String commitDelete(@ModelAttribute(name = "id") Long id) {
+        userRepository.deleteById(id);
         return "redirect:/users";
     }
 

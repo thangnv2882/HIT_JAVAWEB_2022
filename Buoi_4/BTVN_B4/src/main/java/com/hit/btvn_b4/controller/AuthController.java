@@ -19,7 +19,6 @@ public class AuthController {
 
     @GetMapping(value = {"/", "/login"})
     public String Login(Model model) {
-        model.addAttribute("user", new User());
         model.addAttribute("err", "");
         return "login";
     }
@@ -37,7 +36,6 @@ public class AuthController {
     }
 
 
-//    @RequestMapping(value = "/users", method = {RequestMethod.GET, RequestMethod.POST})
     @GetMapping("/users")
     public String showListUsers(Model model) {
         List<User> users = userRepository.findAll();
@@ -63,8 +61,7 @@ public class AuthController {
     }
 
     @GetMapping("/delete/{id}")
-    public String deleteUser(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("id", id);
+    public String deleteUser(@PathVariable("id") Long id) {
         idDel = id;
         return "commitDelete";
     }

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Shorten Link</title>
+    <link
+            rel="stylesheet"
+            href="../static/css/style.css"
+            th:href="@{/css/style.css}"
+    />
+
+</head>
+<body>
+
+<div class="container">
+    <h1>Short URL</h1>
+    <form th:action="@{/save}" method="post">
+        <h2>Paste the URL to be shortened</h2>
+
+        <div class="in">
+            <input type="text" name="originalURL" th:value="${urlOri}" required autofocus>
+            <button type="submit">Submit</button>
+        </div>
+
+        <h2 th:if="${mess}">Your shortened URL</h2>
+        <div class="in" th:if="${mess}">
+            <input type="text" name="shortenURL" th:value="'http://localhost:8080/'+${urlShort}" id="urlShorten">
+            <button type="button" onclick="copyURLShorten()">Copy</button>
+
+        </div>
+
+
+    </form>
+    <h2>
+        <a th:href="@{/api/v1/urls}">View All URL As API</a>
+    </h2>
+
+</div>
+
+<script>
+    function copyURLShorten() {
+        let copyURL = document.getElementById("urlShorten");
+
+        /* Copy the text inside the text field */
+        navigator.clipboard.writeText(copyURL.value);
+
+        /* Alert the copied text */
+        alert("Copied the URL: " + copyURL.value);
+    }
+</script>
+</body>
+</html>

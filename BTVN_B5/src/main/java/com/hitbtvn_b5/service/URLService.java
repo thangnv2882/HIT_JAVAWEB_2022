@@ -42,12 +42,12 @@ public class URLService {
     public void createShortenURL(URL url) {
         List<URL> urls = urlRepository.findAll();
 //        Nếu url gốc đã rút gọn rồi => lấy id của url đó
-//        for (URL i : urls) {
-//            if (i.getOriginalURL().compareTo(url.getOriginalURL()) == 0) {
-//                URLIdPresent = i.getURLId();
-//                return;
-//            }
-//        }
+        for (URL i : urls) {
+            if (i.getOriginalURL().compareTo(url.getOriginalURL()) == 0) {
+                URLIdPresent = i.getURLId();
+                return;
+            }
+        }
         boolean duplicate = true;
         String randomStr = "";
         while (duplicate) {

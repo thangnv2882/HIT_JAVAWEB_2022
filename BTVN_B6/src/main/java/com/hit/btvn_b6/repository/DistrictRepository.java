@@ -2,7 +2,6 @@ package com.hit.btvn_b6.repository;
 
 
 import com.hit.btvn_b6.model.District;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

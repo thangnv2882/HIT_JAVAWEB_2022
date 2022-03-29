@@ -7,8 +7,6 @@ import com.hit.btvn_b6.exceptions.DuplicateException;
 import com.hit.btvn_b6.exceptions.NotFoundException;
 import com.hit.btvn_b6.model.District;
 import com.hit.btvn_b6.model.Province;
-import com.hit.btvn_b6.repository.DistrictRepository;
-import com.hit.btvn_b6.repository.ProvinceRepository;
 import com.hit.btvn_b6.service.DistrictService;
 import com.hit.btvn_b6.service.ProvinceService;
 import org.modelmapper.ModelMapper;

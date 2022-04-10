@@ -3,6 +3,7 @@ package com.hit.btvn_b6.service;
 import com.hit.btvn_b6.model.Province;
 import com.hit.btvn_b6.repository.ProvinceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,7 +14,7 @@ public class ProvinceService {
     private ProvinceRepository provinceRepository;
 
     public List<Province> getAllProvinces() {
-        return provinceRepository.findAll();
+        return provinceRepository.findAll(Sort.by("code").ascending());
     }
 
     public void save(Province province) {

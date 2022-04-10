@@ -6,9 +6,12 @@ import com.hit.btvn_b6.exceptions.DuplicateException;
 import com.hit.btvn_b6.exceptions.NotFoundException;
 import com.hit.btvn_b6.model.District;
 import com.hit.btvn_b6.model.Province;
+import com.hit.btvn_b6.repository.ProvinceRepository;
 import com.hit.btvn_b6.service.ProvinceService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,15 +25,28 @@ public class ProvinceController {
     private ProvinceService provinceService;
 
     @Autowired
+    private ProvinceRepository provinceRepository;
+
+    @Autowired
     private ModelMapper modelMapper;
 
     private Slugify slg = new Slugify();
 
     // Lấy tất các thông tin tỉnh/thành phố
     @GetMapping
-    public ResponseEntity<?> getAllProvince() {
-        List<Province> provinces = provinceService.getAllProvinces();
+    public ResponseEntity<?> getAllProvince(
+            @RequestParam(value = "page", required = false) Integer page
+    ) {
+        List<Province> provinces;
+        if(page == null) {
+            provinces = provinceRepository.findAll(Sort.by("code").ascending());
+        } else {
+            provinces = provinceRepository.findAll(PageRequest.of(page, 3, Sort.by("code").ascending())).getContent();
+        }
+
         return ResponseEntity.status(200).body(provinces);
+
+
     }
 
     // Thêm thông tin của tỉnh/thành phố

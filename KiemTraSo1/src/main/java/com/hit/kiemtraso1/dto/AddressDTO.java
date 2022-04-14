@@ -12,7 +12,6 @@ import org.hibernate.annotations.Nationalized;
 @AllArgsConstructor
 public class AddressDTO {
 
-    @Nationalized
     private String name;
 
     private String code;

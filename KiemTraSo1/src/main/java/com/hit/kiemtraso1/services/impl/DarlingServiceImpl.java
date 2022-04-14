@@ -9,9 +9,7 @@ import com.hit.kiemtraso1.services.IDarlingService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,14 +52,14 @@ public class DarlingServiceImpl implements IDarlingService {
     }
 
     @Override
-    public String createDarling(@RequestBody DarlingDTO darlingDTO) {
+    public String createDarling(DarlingDTO darlingDTO) {
         Darling darling = modelMapper.map(darlingDTO, Darling.class);
         darlingRepository.save(darling);
         return "Created";
     }
 
     @Override
-    public String updateDarling(Long id, @RequestBody DarlingDTO darlingDTO) {
+    public String updateDarling(Long id, DarlingDTO darlingDTO) {
         Optional<Darling> darling = darlingRepository.findById(id);
         checkDarlingExists(darling);
         modelMapper.map(darlingDTO, darling.get());

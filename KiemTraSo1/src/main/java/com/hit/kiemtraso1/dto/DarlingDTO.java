@@ -14,13 +14,11 @@ import org.hibernate.annotations.Nationalized;
 public class DarlingDTO {
 
 
-    @Nationalized
     private String name;
 
     private String phone;
     private String email;
 
-    @Nationalized
     private String favorite;
 
     private Long status;

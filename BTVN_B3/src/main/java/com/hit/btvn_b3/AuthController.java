@@ -16,6 +16,7 @@ public class AuthController {
     }
 
     private static boolean check = false;
+
     @PostMapping("/users")
     public String getUserPage(@ModelAttribute User user, Model model) {
         User o = new User();

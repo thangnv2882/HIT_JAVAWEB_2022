@@ -20,9 +20,11 @@ public class ProvinceService {
     public void save(Province province) {
         provinceRepository.save(province);
     }
+
     public Province findByCode(Long id) {
         return provinceRepository.findByCode(id);
     }
+
     public void deleteByCode(Long code) {
         provinceRepository.deleteById(code);
     }

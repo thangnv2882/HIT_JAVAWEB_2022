@@ -26,7 +26,7 @@ public class DarlingServiceImpl implements IDarlingService {
 
     @Override
     public List<Darling> findAllDarling(Integer page) {
-        if(page == null) {
+        if (page == null) {
             return darlingRepository.findAll();
         } else {
             return darlingRepository.findAll(PageRequest.of(Math.toIntExact(page), 5)).getContent();
@@ -90,7 +90,7 @@ public class DarlingServiceImpl implements IDarlingService {
         List<Address> addresses = darling.get().getAddresses();
         List<Darling> darlings = new ArrayList<>();
         for (Address address : addresses) {
-            if(address.getName().compareTo(name) == 0) {
+            if (address.getName().compareTo(name) == 0) {
                 darlings.add(address.getDarling());
             }
         }
@@ -98,8 +98,8 @@ public class DarlingServiceImpl implements IDarlingService {
     }
 
 
-    public void checkDarlingExists(Optional<Darling> darling ){
-        if(darling.isEmpty()) {
+    public void checkDarlingExists(Optional<Darling> darling) {
+        if (darling.isEmpty()) {
             throw new NotFoundException("Couldn't find a darling.");
         }
     }

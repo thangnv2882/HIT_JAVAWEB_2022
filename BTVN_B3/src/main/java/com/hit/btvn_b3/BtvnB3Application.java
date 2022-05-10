@@ -10,7 +10,6 @@ public class BtvnB3Application {
         SpringApplication.run(BtvnB3Application.class, args);
 
 
-
     }
 
 }

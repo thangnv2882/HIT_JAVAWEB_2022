@@ -7,7 +7,7 @@
 
 </head>
 <body>
-<div class="container text-center" >
+<div class="container text-center">
     <h1>Update user</h1>
 
     <form th:action="@{/save-user}" method="patch" th:object="${user}">
@@ -22,9 +22,9 @@
         <input type="password" id="password" name="password" required th:value="*{password}"> <br>
 
         <label for="fullname">Full name</label>
-        <input type="text" id="fullname" name="fullname" required  th:value="*{fullname}"> <br>
-        <input type="text" name="created" required  th:value="*{created}" hidden> <br>
-        <input type="text" name="updated" required  th:value="*{updated}" hidden> <br>
+        <input type="text" id="fullname" name="fullname" required th:value="*{fullname}"> <br>
+        <input type="text" name="created" required th:value="*{created}" hidden> <br>
+        <input type="text" name="updated" required th:value="*{updated}" hidden> <br>
 
         <button type="submit">Update</button>
 

@@ -30,7 +30,7 @@ public class UserController {
     @GetMapping("/{id}")
     public ResponseEntity<?> getUserById(@PathVariable("id") Long id) {
         Optional<User> user = userRepository.findById(id);
-        if(user.isEmpty()) {
+        if (user.isEmpty()) {
             throw new NotFoundException("Not found user with id: " + id);
         }
         return ResponseEntity.status(200).body(user);
@@ -57,7 +57,7 @@ public class UserController {
             @RequestBody UserDTO userDTO
     ) {
         Optional<User> user = userRepository.findById(id);
-        if(user.isEmpty()) {
+        if (user.isEmpty()) {
             throw new NotFoundException("Not found user with id: " + id);
         }
         user.get().setFullname(userDTO.getFullname());
@@ -67,10 +67,11 @@ public class UserController {
         userRepository.save(user.get());
         return ResponseEntity.status(HttpStatus.OK).body("Updated");
     }
+
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> deleteUserById(@PathVariable(name = "id") Long id) {
         Optional<User> user = userRepository.findById(id);
-        if(user.isEmpty()) {
+        if (user.isEmpty()) {
             throw new NotFoundException("Not found user with id: " + id);
         }
         userRepository.deleteById(id);

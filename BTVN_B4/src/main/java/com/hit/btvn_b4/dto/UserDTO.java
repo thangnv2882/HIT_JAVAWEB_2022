@@ -37,6 +37,7 @@ public class UserDTO {
     public void setFullname(String fullname) {
         this.fullname = fullname;
     }
+
     public static boolean checkNull(UserDTO userDTO) {
         if (userDTO.getUsername().compareTo("") == 0
                 || userDTO.getPassword().compareTo("") == 0

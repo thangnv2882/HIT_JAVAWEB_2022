@@ -7,21 +7,21 @@
 </head>
 <body>
 
-    <div class="container" >
-        <h1>Đăng nhập</h1>
+<div class="container">
+    <h1>Đăng nhập</h1>
 
-        <form th:action="@{/users}" method="post">
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username" required autofocus> <br>
+    <form th:action="@{/users}" method="post">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required autofocus> <br>
 
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" required> <br>
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required> <br>
 
-            <button type="submit">Đăng nhập</button>
+        <button type="submit">Đăng nhập</button>
 
-        </form>
-    </div>
-    <p th:text="${mess} ? 'Tài khoản không tồn tại' : ' '"></p>
+    </form>
+</div>
+<p th:text="${mess} ? 'Tài khoản không tồn tại' : ' '"></p>
 
 
 </body>

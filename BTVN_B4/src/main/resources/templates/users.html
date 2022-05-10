@@ -1,42 +1,42 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>Users</title>
-  <style>
-    a {
-      text-decoration: none;
-      color: #1493fc;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>Users</title>
+    <style>
+        a {
+            text-decoration: none;
+            color: #1493fc;
+        }
+    </style>
 </head>
 <body>
 <h1 th:align="center">List Users</h1>
 <table th:border="1" th:width="800px" style="margin: 0 auto" th:cellpadding="5px" th:cellspacing="0">
-  <tr>
-    <th>ID</th>
-    <th>Username</th>
-    <th>Password</th>
-    <th>Fullname</th>
-    <th th:colspan="2" >Action</th>
-  </tr>
-  <tr th:each="user: ${users}">
-    <td th:utext="${user.id}" th:align="center"></td>
-    <td th:utext="${user.username}"></td>
-    <td th:utext="${user.password}"></td>
-    <td th:utext="${user.fullname}"></td>
-    <td th:align="center"><a th:href="@{'/edit/'+${user.id}}">Edit</a></td>
-    <td th:align="center"><a th:href="@{'/delete/'+${user.id}}">Delete</a></td>
-  </tr>
+    <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Password</th>
+        <th>Fullname</th>
+        <th th:colspan="2">Action</th>
+    </tr>
+    <tr th:each="user: ${users}">
+        <td th:utext="${user.id}" th:align="center"></td>
+        <td th:utext="${user.username}"></td>
+        <td th:utext="${user.password}"></td>
+        <td th:utext="${user.fullname}"></td>
+        <td th:align="center"><a th:href="@{'/edit/'+${user.id}}">Edit</a></td>
+        <td th:align="center"><a th:href="@{'/delete/'+${user.id}}">Delete</a></td>
+    </tr>
 </table>
 
 <div th:align="center">
-  <h2>
-    <a th:href="@{/api/v1/users}" th:align="center">View All Users As API</a>
-  </h2>
-  <h2>
-    <a th:href="@{/add-user}" th:align="center">Create New User</a>
-  </h2>
+    <h2>
+        <a th:href="@{/api/v1/users}" th:align="center">View All Users As API</a>
+    </h2>
+    <h2>
+        <a th:href="@{/add-user}" th:align="center">Create New User</a>
+    </h2>
 </div>
 </body>
 </html>

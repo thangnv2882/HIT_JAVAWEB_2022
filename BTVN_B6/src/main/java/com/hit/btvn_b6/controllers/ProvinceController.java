@@ -38,7 +38,7 @@ public class ProvinceController {
             @RequestParam(value = "page", required = false) Integer page
     ) {
         List<Province> provinces;
-        if(page == null) {
+        if (page == null) {
             provinces = provinceRepository.findAll(Sort.by("code").ascending());
         } else {
             provinces = provinceRepository.findAll(PageRequest.of(page, 3, Sort.by("code").ascending())).getContent();

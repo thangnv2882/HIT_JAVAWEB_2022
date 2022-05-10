@@ -28,7 +28,7 @@ public class URLControllerAPI {
     @GetMapping("/{id}")
     public ResponseEntity<?> getUserById(@PathVariable("id") Long id) {
         URL url = urlService.findByURLId(id);
-        if(url == null) {
+        if (url == null) {
             throw new NotFoundException("Not found url with id: " + id);
         }
         return ResponseEntity.status(200).body(url);
@@ -52,7 +52,7 @@ public class URLControllerAPI {
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> deleteURLById(@PathVariable(name = "id") Long id) {
         URL url = urlService.findByURLId(id);
-        if(url == null) {
+        if (url == null) {
             throw new NotFoundException("Not found URL with id: " + id);
         }
         urlService.delete(url);

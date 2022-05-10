@@ -29,7 +29,7 @@ public class AddressServiceImpl implements IAddressService {
 
     @Override
     public List<Address> findAllAddress(Integer page) {
-        if(page == null) {
+        if (page == null) {
             return addressRepository.findAll();
         } else {
             return addressRepository.findAll(PageRequest.of(Math.toIntExact(page), 5)).getContent();
@@ -75,13 +75,14 @@ public class AddressServiceImpl implements IAddressService {
     }
 
 
-    public void checkDarlingExists(Optional<Darling> darling ){
-        if(darling.isEmpty()) {
+    public void checkDarlingExists(Optional<Darling> darling) {
+        if (darling.isEmpty()) {
             throw new NotFoundException("Couldn't find a darling.");
         }
     }
-    public void checkAddressExists(Optional<Address> address ){
-        if(address.isEmpty()) {
+
+    public void checkAddressExists(Optional<Address> address) {
+        if (address.isEmpty()) {
             throw new NotFoundException("Couldn't find a address.");
         }
     }

@@ -37,12 +37,13 @@ public class AuthController {
                             userDTO.getUsername(), userDTO.getPassword()
                     )
             );
-            UserDetails userDetails = myUserDetailsService.loadUserByUsername(userDTO.getUsername());
-            String jwt = jwtTokenUtil.generateToken(userDetails);
-            return ResponseEntity.ok().body(new AuthenticationResponse(userDTO.getUsername(), jwt));
         } catch (BadCredentialsException e) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
+
+        UserDetails userDetails = myUserDetailsService.loadUserByUsername(userDTO.getUsername());
+        String jwt = jwtTokenUtil.generateToken(userDetails);
+        return ResponseEntity.ok().body(new AuthenticationResponse(userDTO.getUsername(), jwt));
 
 
     }
